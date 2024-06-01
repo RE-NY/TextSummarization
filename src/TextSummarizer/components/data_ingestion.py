@@ -7,7 +7,7 @@ import zipfile
 import shutil
 
 from TextSummarizer.logging import logger    # For logging
-from TextSummarizer.utils.common import read_yaml, create_directories, get_size
+from TextSummarizer.utils.common import get_size
 from TextSummarizer.exception import CustomException
 
 @dataclass(frozen=True)
