@@ -1,4 +1,4 @@
-#Utils folder means we are if we are frequently using same function then we can write it in our utils folder!.
+#Utils file means we are if we are frequently using same function then we can write it in our utils folder!.
 #and when we need it we can then import it from here.
 
 
@@ -11,6 +11,13 @@ from box import ConfigBox
 from pathlib import Path
 from typing import Any
 
+import json
+
+def load_json(file_path):
+    with open(file_path, 'r') as file:
+        config = json.load(file)
+    
+    return config['TrainingArguments']
 
 
 @ensure_annotations
