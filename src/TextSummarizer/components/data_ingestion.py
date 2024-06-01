@@ -20,22 +20,22 @@ class DataIngestionConfig:
 
 class DataIngestion:
     def __init__(self):
-        self.ingestion_config = DataIngestionConfig()
+        self.data_ingestion_config = DataIngestionConfig()
 
 
     
     def load_file(self):
         try:
-            if not os.path.exists(self.ingestion_config.saved_file_path):
+            if not os.path.exists(self.data_ingestion_config.saved_file_path):
                 # filename, headers = request.urlretrieve(
                 #     url = self.config.source_URL,
                 #     filename = self.config.local_data_file
                 # )
-                os.makedirs(self.ingestion_config.root_dir, exist_ok=True)
-                shutil.copy(self.ingestion_config.source_path, self.ingestion_config.saved_file_path)
+                os.makedirs(self.data_ingestion_config.root_dir, exist_ok=True)
+                shutil.copy(self.data_ingestion_config.source_path, self.data_ingestion_config.saved_file_path)
                 logger.info("Dataset Copied and loaded!")
             else:
-                logger.info(f"File already exists of size: {get_size(Path(self.ingestion_config.saved_file_path))}")  
+                logger.info(f"File already exists of size: {get_size(Path(self.data_ingestion_config.saved_file_path))}")  
         except Exception as e:
             raise CustomException(e)
 
@@ -48,10 +48,10 @@ class DataIngestion:
         Function returns None
         """
         try:
-            os.makedirs(self.ingestion_config.unzip_dir, exist_ok=True)
-            with zipfile.ZipFile(self.ingestion_config.saved_file_path, 'r') as zip_ref:
-                zip_ref.extractall(self.ingestion_config.unzip_dir)
-            logger.info(f"Zip File extracted and save in dir : {self.ingestion_config.unzip_dir}")
+            os.makedirs(self.data_ingestion_config.unzip_dir, exist_ok=True)
+            with zipfile.ZipFile(self.data_ingestion_config.saved_file_path, 'r') as zip_ref:
+                zip_ref.extractall(self.data_ingestion_config.unzip_dir)
+            logger.info(f"Zip File extracted and save in dir : {self.data_ingestion_config.unzip_dir}")
         except Exception as e:
             raise CustomException(e)
 
