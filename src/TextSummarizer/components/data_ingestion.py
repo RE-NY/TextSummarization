@@ -56,8 +56,5 @@ class DataIngestion:
             raise CustomException(e)
 
 
-if __name__ == "__main__":
-    data_ingestion = DataIngestion()
-    data_ingestion.load_file()
-    data_ingestion.extract_zip_file()
+
 
